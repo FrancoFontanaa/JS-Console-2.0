@@ -16,16 +16,16 @@ const init = () => {
         const createdTiles = []
         let tilesize;
             
-        console.config = (configObject = {}) => {
-
-            configObject.tileSize = configObject.tileSize || "20px";
-            configObject.fontSize = configObject.fontSize || "medium";
-            configObject.textColor = configObject.textColor || "white";
-            configObject.bgColor = configObject.bgColor || "#2d2d2d";
-            configObject.aspectRatio = configObject.aspectRatio || "1 / 1";
-            configObject.maxWidth = configObject.maxWidth || "800px";
-            configObject.disableOldLog = configObject.disableOldLog || false;
-
+        console.config = (configObject = {
+            tileSize: "20px",
+            fontSize: "medium",
+            textColor: "white",
+            bgColor: "#2d2d2d",
+            aspectRatio: "1 / 1",
+            maxWidth: "800px",
+            disableOldLog: false
+        }) => {
+            
             consoleStyle.innerHTML = `
                 #console {
                     font-size: ${configObject.fontSize};
@@ -45,13 +45,15 @@ const init = () => {
             globalThis.disableOldLog = configObject.disableOldLog;
         };
 
-        console.newTile = (configObject = {}) => {
-            configObject.tileName = configObject.tileName || "defaultTile";
-            configObject.tileColor = configObject.tileColor || "white";
-            configObject.innerText = configObject.innerText || "";
-            configObject.innerTextColor = configObject.innerTextColor || "black";
-            configObject.borderSize = configObject.borderSize || "1px";
-            configObject.borderColor = configObject.borderColor || "gray";
+        console.newTile = (configObject = {
+            tileName: "defaultTile",
+            tileColor: "white",
+            innerText: "",
+            innerTextColor: "black",
+            borderSize: "1px",
+            borderColor: "gray"
+        }) => {
+
             if (createdTiles.includes(configObject.tileName)) {
                 console.error(`A tile named "${configObject.tileName}" already exists!`);
                 return
